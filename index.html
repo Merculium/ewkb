@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Erna Wojaczek - Hafty i Rękodzieło</title>
+  <title>Erna Wojaczek — Hafty i Rękodzieło</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -11,38 +11,52 @@
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- HEADER -->
   <header class="site-header">
+    <input type="checkbox" id="nav-check" class="nav-check" />
     <nav class="nav">
-      <a href="#hero" class="logo-link">
+
+      <ul class="nav-links nav-links--left">
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#uslugi">Usługi</a></li>
+      </ul>
+
+      <a href="#hero" class="logo-link" aria-label="Strona główna">
         <div class="logo">
-          <img src="assets/logo.png" alt="Logo Erna Wojaczek" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+          <img src="assets/logo.png" alt="Erna Wojaczek Rękodzieło" class="logo-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="logo-fallback" style="display:none;">
-            <span class="logo-ladybug">🐞</span>
-            <div>
-              <span class="logo-name">Erna Wojaczek</span>
-              <span class="logo-sub">Rękodzieło</span>
-            </div>
+            <span class="logo-name">Erna Wojaczek</span>
+            <span class="logo-sub">Rękodzieło</span>
           </div>
         </div>
       </a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#uslugi">Usługi</a></li>
+
+      <ul class="nav-links nav-links--right">
         <li><a href="#o-mnie">O mnie</a></li>
         <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
       </ul>
+
+      <label class="nav-toggle" for="nav-check" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </label>
+
     </nav>
+    <div class="mobile-nav">
+      <ul>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#uslugi">Usługi</a></li>
+        <li><a href="#o-mnie">O mnie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
   </header>
 
   <!-- HERO -->
   <section id="hero" class="hero">
     <div class="hero-bg-pattern"></div>
     <div class="hero-content">
-      <p class="hero-eyebrow">Rękodzieło & Hafty Tradycyjne </p>
+      <p class="hero-eyebrow">Rękodzieło · Hafty Tradycyjne · Rekonstrukcje Historyczne</p>
       <h1 class="hero-title">
         Sztuka wyhaftowana<br />
         <em>z duszą</em>
@@ -52,28 +66,25 @@
         z igłą w dłoni i historią w sercu.
       </p>
       <div class="hero-actions">
-        <a href="#portfolio" class="btn btn-primary">Zobacz portfolio</a>
-        <a href="#kontakt" class="btn btn-ghost">Napisz do mnie</a>
+        <a href="#portfolio" class="btn btn-primary">
+          <span aria-hidden="true">🐞</span> Zobacz portfolio
+        </a>
+        <a href="#kontakt" class="btn btn-ghost">
+          Napisz do mnie <span aria-hidden="true">🌻</span>
+        </a>
       </div>
     </div>
     <div class="hero-ornament">
-      <img src="assets/hero-embroidery.jpg" alt="Przykład haftu" class="hero-img" onerror="this.parentElement.classList.add('hero-img-placeholder')" />
-      <div class="hero-badge">
-        <span class="badge-icon">🐞</span>
-        <span>Ręcznie szyte<br/>z pasją</span>
+      <div class="hero-img-wrap">
+        <img src="assets/hero-embroidery.jpg" alt="Przykład haftu — haft słowiański"
+          onerror="this.parentElement.classList.add('img-placeholder')" />
       </div>
     </div>
-    <!-- Decorative ladybugs -->
-    <span class="deco-bug deco-bug--1" aria-hidden="true">🐞</span>
-    <span class="deco-bug deco-bug--2" aria-hidden="true">🌻</span>
   </section>
 
   <!-- DIVIDER -->
   <div class="section-divider" aria-hidden="true">
-    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0,24 C200,48 400,0 600,24 C800,48 1000,0 1200,24 L1200,48 L0,48 Z" fill="var(--cream)"/>
-    </svg>
-    <div class="divider-motif">✦ ✦ ✦</div>
+    <span class="divider-motif">✦ ✦ ✦</span>
   </div>
 
   <!-- PORTFOLIO -->
@@ -82,85 +93,59 @@
       <div class="section-header">
         <p class="section-eyebrow">Galeria</p>
         <h2 class="section-title">Portfolio</h2>
-        <p class="section-desc">Wybrane prace - od haftów ludowych po rekonstrukcje historycznych wzorów słowiańskich.</p>
-      </div>
-
-      <div class="portfolio-filter">
-        <button class="filter-btn active" data-filter="all">Wszystkie</button>
-        <button class="filter-btn" data-filter="ludowe">Ludowe</button>
-        <button class="filter-btn" data-filter="slowiańskie">Słowiańskie</button>
-        <button class="filter-btn" data-filter="rekonstrukcje">Rekonstrukcje</button>
+        <p class="section-desc">Wybrane prace — od haftów ludowych po rekonstrukcje historycznych wzorów słowiańskich.</p>
       </div>
 
       <div class="portfolio-grid">
-        <!-- Items: replace src and data-filter with real images/categories -->
-        <article class="portfolio-item" data-filter="ludowe">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-1.jpg" alt="Haft ludowy" loading="lazy"
+            <img src="assets/portfolio-1.jpg" alt="Haft łowicki" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Haft ludowy</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Haft łowicki</h3>
           <p class="portfolio-cat">Tradycja ludowa</p>
         </article>
 
-        <article class="portfolio-item" data-filter="slowiańskie">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-2.jpg" alt="Haft słowiański" loading="lazy"
+            <img src="assets/portfolio-2.jpg" alt="Motyw słowiański" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Haft słowiański</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Motyw słowiański</h3>
           <p class="portfolio-cat">Hafty słowiańskie</p>
         </article>
 
-        <article class="portfolio-item" data-filter="rekonstrukcje">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-3.jpg" alt="Rekonstrukcja historyczna" loading="lazy"
+            <img src="assets/portfolio-3.jpg" alt="Średniowieczny ornament" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Rekonstrukcja</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Średniowieczny ornament</h3>
           <p class="portfolio-cat">Rekonstrukcja historyczna</p>
         </article>
 
-        <article class="portfolio-item" data-filter="ludowe">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-4.jpg" alt="Haft tradycyjny" loading="lazy"
+            <img src="assets/portfolio-4.jpg" alt="Wzór kurpiowski" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Haft tradycyjny</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Wzór kurpiowski</h3>
           <p class="portfolio-cat">Tradycja ludowa</p>
         </article>
 
-        <article class="portfolio-item" data-filter="slowiańskie">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-5.jpg" alt="Haft słowiański na lnie" loading="lazy"
+            <img src="assets/portfolio-5.jpg" alt="Hafty na lnie" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Na lnie</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Hafty na lnie</h3>
           <p class="portfolio-cat">Hafty słowiańskie</p>
         </article>
 
-        <article class="portfolio-item" data-filter="rekonstrukcje">
+        <article class="portfolio-item">
           <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-6.jpg" alt="Rekonstrukcja dawna" loading="lazy"
+            <img src="assets/portfolio-6.jpg" alt="Dawny wzór krakowski" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
-            <div class="portfolio-overlay">
-              <span class="portfolio-label">Rekonstrukcja</span>
-            </div>
           </div>
           <h3 class="portfolio-title">Dawny wzór krakowski</h3>
           <p class="portfolio-cat">Rekonstrukcja historyczna</p>
@@ -171,7 +156,6 @@
 
   <!-- SERVICES -->
   <section id="uslugi" class="section services">
-    <div class="services-bg-pattern" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header">
         <p class="section-eyebrow">Co oferuję</p>
@@ -181,34 +165,28 @@
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">🧵</div>
           <h3>Hafty na zamówienie</h3>
-          <p>Projektuję i haftuję według Twoich potrzeb - ubrania, dekoracje, pamiątki rodzinne. Każda praca jest unikatowa.</p>
+          <p>Projektuję i haftują według Twoich potrzeb — ubrania, dekoracje, pamiątki rodzinne. Każda praca jest unikatowa.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🏰</div>
           <h3>Rekonstrukcje historyczne</h3>
           <p>Specjalizuję się w odtwarzaniu dawnych wzorów słowiańskich i średniowiecznych — dla grup rekonstrukcyjnych i muzealnych.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🌸</div>
           <h3>Hafty ludowe i etniczne</h3>
-          <p>Wzory łowickie, kurpiowskie, podhalańskie - tradycja zakonserwowana w ściegu krzyżykowym i haftach płaskich.</p>
+          <p>Wzory łowickie, kurpiowskie, podhalańskie — tradycja zakonserwowana w ściegu krzyżykowym i haftach płaskich.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🌻</div>
           <h3>Warsztaty i nauka</h3>
           <p>Prowadzę warsztaty dla początkujących i zaawansowanych. Nauka tradycyjnych technik haftowania z historycznym tłem.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🎁</div>
           <h3>Upominki i pamiątki</h3>
-          <p>Haftowane zastawki, poduszki, torby, ramki - piękne prezenty, w których zaklęty jest czas.</p>
+          <p>Haftowane zastawki, poduszki, torby, ramki — piękne prezenty, które trwają pokolenia.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🐞</div>
           <h3>Projekty indywidualne</h3>
-          <p>Masz własny pomysł na wzór lub motyw? Chętnie go zrealizuję - od projektu do gotowego haftu.</p>
+          <p>Masz własny pomysł na wzór lub motyw? Chętnie go zrealizuję — od projektu do gotowego haftu.</p>
         </div>
       </div>
     </div>
@@ -223,24 +201,23 @@
             <img src="assets/about.jpg" alt="Erna Wojaczek przy pracy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
-          <div class="about-deco-sunflower" aria-hidden="true">🌻</div>
         </div>
         <div class="about-text">
           <p class="section-eyebrow">Rękodzielnik</p>
           <h2 class="section-title">O mnie</h2>
           <p>
-            Jestem Erna Wojaczek - rękodzielnik z pasją do tradycji, historii i igły. 
-            Haft towarzyszy mi od dzieciństwa, ale swoje serce oddałam przede wszystkim 
+            Jestem Erna Wojaczek — rękodzielnik z pasją do tradycji, historii i igły.
+            Haft towarzyszy mi od dzieciństwa, ale swoje serce oddałam przede wszystkim
             wzornictwu dawnych Słowian i rekonstrukcjom średniowiecznym.
           </p>
           <p>
-            Każda praca to dla mnie podróż w czasie - do epoki, gdy wzory nie były tylko ozdobą, 
-            lecz opowieścią o świecie, naturze i człowieku. W swoich haftach staram się 
+            Każda praca to dla mnie podróż w czasie — do epoki, gdy wzory nie były tylko ozdobą,
+            lecz opowieścią o świecie, naturze i człowieku. W swoich haftach staram się
             zachować tę głębię.
           </p>
           <p>
-            Tworzę z miłością do tradycji i precyzją rzemieślnika. Specjalizuję się 
-            w haftach ludowych, słowiańskich i dawnych technikach haftowania płaskiego, 
+            Tworzę z miłością do tradycji i precyzją rzemieślnika. Specjalizuję się
+            w haftach ludowych, słowiańskich i dawnych technikach haftowania płaskiego,
             krzyżykowego i złotniczego.
           </p>
           <div class="about-badges">
@@ -249,6 +226,11 @@
             <span class="badge">Hafty średniowieczne</span>
             <span class="badge">Warsztaty</span>
           </div>
+          <div class="about-actions">
+            <a href="#kontakt" class="btn btn-primary">
+              <span aria-hidden="true">🐞</span> Napisz do mnie
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -256,74 +238,50 @@
 
   <!-- CONTACT -->
   <section id="kontakt" class="section contact">
-    <div class="contact-bg" aria-hidden="true"></div>
     <div class="container">
       <div class="section-header">
         <p class="section-eyebrow">Porozmawiajmy</p>
         <h2 class="section-title">Kontakt</h2>
-        <p class="section-desc">Chcesz zamówić haft, wziąć udział w warsztacie lub po prostu porozmawiać o tradycji? Napisz!</p>
+        <p class="section-desc">Chcesz zamówić haft, wziąć udział w warsztacie lub po prostu porozmawiać o tradycji? Napisz.</p>
       </div>
 
       <div class="contact-grid">
         <div class="contact-info">
           <div class="contact-item">
-            <span class="contact-icon">📧</span>
-            <div>
-              <strong>E-mail</strong>
-              <!-- Replace with real email -->
-              <a href="mailto:ernawojaczek@gmail.com">ernawojaczek@gmail.com</a>
-            </div>
+            <div class="contact-item-label">E-mail</div>
+            <!-- Replace with real address -->
+            <a href="mailto:erna@example.com">erna@example.com</a>
           </div>
           <div class="contact-item">
-            <span class="contact-icon">📱</span>
-            <div>
-              <strong>Facebook</strong>
-              <a href="https://www.facebook.com/ErnaWojaczekRekodzielo" target="_blank" rel="noopener">
-                Erna Wojaczek Rękodzieło
-              </a>
-            </div>
+            <div class="contact-item-label">Facebook</div>
+            <a href="https://www.facebook.com/ErnaWojaczekRekodzielo" target="_blank" rel="noopener">
+              ErnaWojaczekRekodzielo
+            </a>
           </div>
           <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <div>
-              <strong>Lokalizacja</strong>
-              <span>Polska</span>
-            </div>
+            <div class="contact-item-label">Lokalizacja</div>
+            <span>Polska</span>
           </div>
-          <div class="contact-note">
-            <span class="contact-bug" aria-hidden="true">🐞</span>
-            <p>Zamówienia realizuję z miłością i cierpliwością. Czas realizacji ustalam indywidualnie.</p>
-          </div>
+          <p class="contact-note">
+            Zamówienia realizuję z miłością i cierpliwością.<br />
+            Czas realizacji ustalam indywidualnie.
+          </p>
         </div>
 
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-group">
-            <label for="name">Imię i nazwisko</label>
-            <input type="text" id="name" name="name" placeholder="Twoje imię" required autocomplete="name" />
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="twoj@email.pl" required autocomplete="email" />
-          </div>
-          <div class="form-group">
-            <label for="subject">Temat</label>
-            <select id="subject" name="subject">
-              <option value="">Wybierz temat...</option>
-              <option value="zamowienie">Zamówienie haftu</option>
-              <option value="rekonstrukcja">Rekonstrukcja historyczna</option>
-              <option value="warsztaty">Warsztaty</option>
-              <option value="inne">Inne</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Wiadomość</label>
-            <textarea id="message" name="message" rows="5" placeholder="Opisz swój pomysł lub zapytanie..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">
-            Wyślij wiadomość <span aria-hidden="true">→</span>
-          </button>
+        <div class="contact-mailto">
+          <p class="mailto-intro">
+            Kliknij przycisk poniżej, żeby otworzyć wiadomość e-mail w swojej aplikacji pocztowej.
+            Możesz też napisać bezpośrednio na adres podany obok.
+          </p>
+          <a href="mailto:erna@example.com?subject=Zapytanie%20o%20haft" class="btn btn-primary btn-full">
+            <span aria-hidden="true">🐞</span> Napisz e-mail
+          </a>
+          <a href="https://www.facebook.com/ErnaWojaczekRekodzielo" target="_blank" rel="noopener"
+             class="btn btn-ghost btn-full">
+            Napisz na Facebooku <span aria-hidden="true">🌻</span>
+          </a>
           <p class="form-note">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</p>
-        </form>
+        </div>
       </div>
     </div>
   </section>
@@ -333,13 +291,11 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="footer-bug" aria-hidden="true">🐞</span>
-          <div>
-            <strong>Erna Wojaczek</strong>
-            <span>Hafty i Rękodzieło</span>
-          </div>
+          <img src="assets/logo.png" alt="Erna Wojaczek" class="footer-logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="footer-logo-fallback" style="display:none;">Erna Wojaczek · Rękodzieło</span>
         </div>
-        <nav class="footer-nav" aria-label="Stopka nawigacja">
+        <nav class="footer-nav" aria-label="Stopka">
           <a href="#portfolio">Portfolio</a>
           <a href="#uslugi">Usługi</a>
           <a href="#o-mnie">O mnie</a>
@@ -347,10 +303,8 @@
         </nav>
         <p class="footer-copy">© 2025 Erna Wojaczek. Wszelkie prawa zastrzeżone.</p>
       </div>
-      <div class="footer-motif" aria-hidden="true">✦ 🐞 ✦ 🌻 ✦ 🐞 ✦</div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
