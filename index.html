@@ -248,8 +248,7 @@
         <div class="contact-info">
           <div class="contact-item">
             <div class="contact-item-label">E-mail</div>
-            <!-- Replace with real address -->
-            <a href="/cdn-cgi/l/email-protection#dbbea9b5baacb4b1bab8a1beb09bbcb6bab2b7f5b8b4b6"><span class="__cf_email__" data-cfemail="482d3a26293f2722292b322d23082f25292124662b2725">[email&#160;protected]</span></a>
+            <a href="mailto:erna.wojaczek@gmail.com">erna.wojaczek@gmail.com</a>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Facebook</div>
@@ -265,14 +264,17 @@
         </div>
 
         <div class="contact-mailto">
-          <p class="mailto-intro">
-            Kliknij przycisk poniżej, żeby utworzyć wiadomość e-mail w swojej aplikacji pocztowej.
-            Możesz też napisać bezpośrednio na adres podany obok.
-          </p>
-          <a href="/cdn-cgi/l/email-protection#274255494667425f464a574b420944484a185452454d4244531a7d46575e5346494e42021517480215174f464153" class="btn btn-primary btn-full">
-            <span aria-hidden="true">🐞</span> Napisz e-mail
-          </a>
-       
+          <textarea id="contact-msg" class="contact-textarea" placeholder="Napisz swoją wiadomość..." rows="5"></textarea>
+          <button type="button" class="btn btn-primary btn-full" onclick="
+            var msg = document.getElementById('contact-msg').value.trim();
+            if(msg) {
+              window.location.href = 'mailto:erna.wojaczek@gmail.com?subject=Zapytanie%20ze%20strony&body=' + encodeURIComponent(msg);
+            } else {
+              alert('Wpisz treść wiadomości przed wysłaniem.');
+            }
+          ">
+            <span aria-hidden="true">🐞</span> Wyślij e-mail
+          </button>
           <p class="form-note">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</p>
         </div>
       </div>
