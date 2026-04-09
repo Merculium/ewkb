@@ -55,28 +55,31 @@
   <!-- HERO -->
   <section id="hero" class="hero">
     <div class="hero-bg-pattern"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Rękodzieło · Hafty Tradycyjne · Rekonstrukcje Historyczne</p>
-      <h1 class="hero-title">
-        Hafty <em>z duszą</em>
-      </h1>
-      <p class="hero-desc">
-        Hafty ludowe, słowiańskie i dawne - tworzone z miłością do tradycji,
-        z igłą w dłoni i historią w sercu.
-      </p>
-      <div class="hero-actions">
-        <a href="#portfolio" class="btn btn-primary">
-          <span aria-hidden="true">🐞</span> Zobacz portfolio
-        </a>
-        <a href="#kontakt" class="btn btn-ghost">
-          Napisz do mnie <span aria-hidden="true">🌻</span>
-        </a>
+    <div class="hero-inner">
+      <div class="hero-ornament">
+        <div class="hero-img-wrap">
+          <!-- REPLACE: swap src with your image path, e.g. assets/hero-embroidery.jpg -->
+          <img src="assets/hero-embroidery.jpg" alt="Przykład haftu — haft słowiański"
+            onerror="this.parentElement.classList.add('img-placeholder')" />
+        </div>
       </div>
-    </div>
-    <div class="hero-ornament">
-      <div class="hero-img-wrap">
-        <img src="assets/hero-embroidery.jpg" alt="Przykład haftu — haft słowiański"
-          onerror="this.parentElement.classList.add('img-placeholder')" />
+      <div class="hero-content">
+        <p class="hero-eyebrow">Rękodzieło · Hafty Tradycyjne · Rekonstrukcje Historyczne</p>
+        <h1 class="hero-title">
+          Hafty <em>z duszą</em>
+        </h1>
+        <p class="hero-desc">
+          Hafty ludowe, słowiańskie i dawne - tworzone z miłością do tradycji,
+          z igłą w dłoni i historią w sercu.
+        </p>
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">
+            <span aria-hidden="true">🐞</span> Zobacz portfolio
+          </a>
+          <a href="#kontakt" class="btn btn-ghost">
+            Napisz do mnie <span aria-hidden="true">🌻</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -98,6 +101,7 @@
       <div class="portfolio-grid">
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-1.jpg -->
             <img src="assets/portfolio-1.jpg" alt="Haft łowicki" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -107,6 +111,7 @@
 
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-2.jpg -->
             <img src="assets/portfolio-2.jpg" alt="Motyw słowiański" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -116,6 +121,7 @@
 
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-3.jpg -->
             <img src="assets/portfolio-3.jpg" alt="Średniowieczny ornament" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -125,6 +131,7 @@
 
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-4.jpg -->
             <img src="assets/portfolio-4.jpg" alt="Wzór kurpiowski" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -134,6 +141,7 @@
 
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-5.jpg -->
             <img src="assets/portfolio-5.jpg" alt="Hafty na lnie" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -143,6 +151,7 @@
 
         <article class="portfolio-item">
           <div class="portfolio-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/portfolio-6.jpg -->
             <img src="assets/portfolio-6.jpg" alt="Dawny wzór krakowski" loading="lazy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -197,6 +206,7 @@
       <div class="about-grid">
         <div class="about-img-side">
           <div class="about-img-wrap">
+            <!-- REPLACE: swap src with your image path, e.g. assets/about.jpg -->
             <img src="assets/about.jpg" alt="Erna Wojaczek przy pracy"
               onerror="this.parentElement.classList.add('img-placeholder')" />
           </div>
@@ -256,7 +266,6 @@
               Erna Wojaczek Rękodzieło
             </a>
           </div>
-        
           <p class="contact-note">
             Zamówienia realizuję z miłością i cierpliwością.<br />
             Czas realizacji ustalam indywidualnie.
@@ -265,14 +274,17 @@
 
         <div class="contact-mailto">
           <textarea id="contact-msg" class="contact-textarea" placeholder="Napisz swoją wiadomość..." rows="5"></textarea>
-          <button type="button" class="btn btn-primary btn-full" onclick="
-            var msg = document.getElementById('contact-msg').value.trim();
-            if(msg) {
-              window.location.href = 'mailto:erna.wojaczek@gmail.com?subject=Zapytanie%20ze%20strony&body=' + encodeURIComponent(msg);
-            } else {
-              alert('Wpisz treść wiadomości przed wysłaniem.');
-            }
-          ">
+          <button
+            type="button"
+            class="btn btn-primary btn-full"
+            onclick="
+              var msg = document.getElementById('contact-msg').value.trim();
+              if(msg) {
+                window.location.href = 'mailto:erna.wojaczek@gmail.com?subject=Zapytanie%20ze%20strony&body=' + encodeURIComponent(msg);
+              } else {
+                alert('Wpisz treść wiadomości przed wysłaniem.');
+              }
+            ">
             <span aria-hidden="true">🐞</span> Wyślij e-mail
           </button>
           <p class="form-note">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</p>
@@ -284,21 +296,7 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-inner">
-        <nav class="footer-nav-left" aria-label="Stopka lewa">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#uslugi">Usługi</a>
-        </nav>
-        <div class="footer-brand">
-          <img src="assets/logo.png" alt="Erna Wojaczek" class="footer-logo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-          <span class="footer-logo-fallback" style="display:none;">Erna Wojaczek - Hafty i Rękodzieło</span>
-        </div>
-        <nav class="footer-nav-right" aria-label="Stopka prawa">
-          <a href="#o-mnie">O mnie</a>
-          <a href="#kontakt">Kontakt</a>
-        </nav>
-      </div>      <p class="footer-copy" style="text-align:center; padding-top:1rem;">© 2024 Erna Wojaczek · Hafty i Rękodzieło</p>
+      <p class="footer-copy">© 2026 Erna Wojaczek · Hafty i Rękodzieło</p>
     </div>
   </footer>
 
