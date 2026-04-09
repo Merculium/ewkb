@@ -1,296 +1,720 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Erna Wojaczek - Hafty i Rękodzieło</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+/* =============================
+   ERNA WOJACZEK — HAFTY I RĘKODZIEŁO
+   style.css — Web 2006 Remastered Edition
+   ============================= */
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <input type="checkbox" id="nav-check" class="nav-check" />
-    <nav class="nav">
+/* --- RESET --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      <ul class="nav-links nav-links--left">
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#uslugi">Usługi</a></li>
-      </ul>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
 
-      <a href="#hero" class="logo-link" aria-label="Strona główna">
-        <div class="logo">
-          <img src="assets/logo.png" alt="Erna Wojaczek Rękodzieło" class="logo-img"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <div class="logo-fallback" style="display:none;">
-            <span class="logo-name">Erna Wojaczek</span>
-            <span class="logo-sub">Rękodzieło</span>
-          </div>
-        </div>
-      </a>
+:root {
+  --white:      #ffffff;
+  --parchment:  #f7f5f2;
+  --linen:      #e8e2da;
+  --warm-mid:   #c8c2b8;
+  --slate:      #5f6864;
+  --ink:        #2a2420;
 
-      <ul class="nav-links nav-links--right">
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
-      </ul>
+  --sand:       #e1ddd5;
+  --cobalt:     #1e3ea9;
+  --crimson:    #983126;
+  --crimson-light: #c0392b;
+  --forest:     #2a8944;
 
-      <label class="nav-toggle" for="nav-check" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </label>
+  --font-display: 'Cinzel', serif;
+  --font-body:    'EB Garamond', serif;
 
-    </nav>
-    <div class="mobile-nav">
-      <ul>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#uslugi">Usługi</a></li>
-        <li><a href="#o-mnie">O mnie</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
-    </div>
-  </header>
+  /* 2006 vibes */
+  --glow-red:  0 0 12px rgba(152,49,38,0.35), 0 0 30px rgba(152,49,38,0.15);
+  --glow-soft: 0 2px 16px rgba(0,0,0,0.13);
+  --nav-shadow: 0 3px 12px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12);
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">Rękodzieło · Hafty Tradycyjne · Rekonstrukcje Historyczne</p>
-      <h1 class="hero-title">
-        Hafty <em>z duszą</em>
-      </h1>
-      <p class="hero-desc">
-        Hafty ludowe, słowiańskie i dawne - tworzone z miłością do tradycji,
-        z igłą w dłoni i historią w sercu.
-      </p>
-      <div class="hero-actions">
-        <a href="#portfolio" class="btn btn-primary">
-          <span aria-hidden="true">🐞</span> Zobacz portfolio
-        </a>
-        <a href="#kontakt" class="btn btn-ghost">
-          Napisz do mnie <span aria-hidden="true">🌻</span>
-        </a>
-      </div>
-    </div>
-    <div class="hero-ornament">
-      <div class="hero-img-wrap">
-        <img src="assets/hero-embroidery.jpg" alt="Przykład haftu — haft słowiański"
-          onerror="this.parentElement.classList.add('img-placeholder')" />
-      </div>
-    </div>
-  </section>
+  --nav-h:         53px;
+  --logo-h:        118px; /* +15% from 103px */
+  --logo-overflow: calc((var(--logo-h) - var(--nav-h)) / 2);
 
-  <!-- DIVIDER -->
-  <div class="section-divider" aria-hidden="true">
-    <span class="divider-motif">✦ ✦ ✦</span>
-  </div>
+  --section-pad: clamp(4rem, 8vw, 7rem);
+  --container:   1100px;
+  --transition:  0.2s ease;
+}
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio" class="section portfolio">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">Galeria</p>
-        <h2 class="section-title">Portfolio</h2>
-        <p class="section-desc">Wybrane prace - od haftów ludowych po rekonstrukcje historycznych wzorów słowiańskich.</p>
-      </div>
+html { scroll-behavior: smooth; font-size: 110%; }
 
-      <div class="portfolio-grid">
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-1.jpg" alt="Haft łowicki" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Haft łowicki</h3>
-          <p class="portfolio-cat">Tradycja ludowa</p>
-        </article>
+body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.7vw, 1.1rem);
+  line-height: 1.78;
+  color: var(--ink);
+  background: var(--white);
+  overflow-x: hidden;
+}
 
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-2.jpg" alt="Motyw słowiański" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Motyw słowiański</h3>
-          <p class="portfolio-cat">Hafty słowiańskie</p>
-        </article>
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
 
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-3.jpg" alt="Średniowieczny ornament" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Średniowieczny ornament</h3>
-          <p class="portfolio-cat">Rekonstrukcja historyczna</p>
-        </article>
+.container {
+  width: min(var(--container), 100% - 2.5rem);
+  margin-inline: auto;
+}
 
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-4.jpg" alt="Wzór kurpiowski" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Wzór kurpiowski</h3>
-          <p class="portfolio-cat">Tradycja ludowa</p>
-        </article>
+/* =============================
+   HEADER / NAV — 2006 style
+   ============================= */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: linear-gradient(180deg, #ffffff 0%, #f5f2ee 60%, #ede8e2 100%);
+  border-bottom: 2px solid var(--linen);
+  box-shadow: var(--nav-shadow);
+  z-index: 100;
+  overflow: visible;
+}
 
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-5.jpg" alt="Hafty na lnie" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Hafty na lnie</h3>
-          <p class="portfolio-cat">Hafty słowiańskie</p>
-        </article>
+/* subtle inner highlight line — Web 2.0 signature */
+.site-header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9) 30%, rgba(255,255,255,0.9) 70%, transparent);
+  pointer-events: none;
+}
 
-        <article class="portfolio-item">
-          <div class="portfolio-img-wrap">
-            <img src="assets/portfolio-6.jpg" alt="Dawny wzór krakowski" loading="lazy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-          <h3 class="portfolio-title">Dawny wzór krakowski</h3>
-          <p class="portfolio-cat">Rekonstrukcja historyczna</p>
-        </article>
-      </div>
-    </div>
-  </section>
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--nav-h);
+  width: min(var(--container), 100% - 2.5rem);
+  margin-inline: auto;
+  position: relative;
+  overflow: visible;
+}
 
-  <!-- SERVICES -->
-  <section id="uslugi" class="section services">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">Co oferuję</p>
-        <h2 class="section-title">Usługi</h2>
-        <p class="section-desc">Każda praca powstaje ręcznie, z dbałością o tradycję i szczegół.</p>
-      </div>
+.nav-links {
+  display: flex; align-items: center; gap: 2.5rem;
+  height: 100%;
+}
+.nav-links--left  { justify-content: flex-start; }
+.nav-links--right { justify-content: flex-end; }
 
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Hafty na zamówienie</h3>
-          <p>Projektuję i haftują według Twoich potrzeb - ubrania, dekoracje, pamiątki rodzinne. Każda praca jest unikatowa.</p>
-        </div>
-        <div class="service-card">
-          <h3>Rekonstrukcje historyczne</h3>
-          <p>Specjalizuję się w odtwarzaniu dawnych wzorów słowiańskich i średniowiecznych - dla grup rekonstrukcyjnych i muzealnych.</p>
-        </div>
-        <div class="service-card">
-          <h3>Hafty ludowe i etniczne</h3>
-          <p>Wzory łowickie, kurpiowskie, podhalańskie - tradycja zakonserwowana w ściegu krzyżykowym i haftach płaskich.</p>
-        </div>
-        <div class="service-card">
-          <h3>Warsztaty i nauka</h3>
-          <p>Prowadzę warsztaty dla początkujących i zaawansowanych. Nauka tradycyjnych technik haftowania z historycznym tłem.</p>
-        </div>
-        <div class="service-card">
-          <h3>Upominki i pamiątki</h3>
-          <p>Haftowane zastawki, poduszki, torby, ramki - piękne prezenty, w których żyje historia.</p>
-        </div>
-        <div class="service-card">
-          <h3>Projekty indywidualne</h3>
-          <p>Masz własny pomysł na wzór lub motyw? Chętnie go zrealizuję - od projektu do gotowego haftu.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+.nav-links a {
+  font-family: var(--font-display);
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #1c3eab;
+  font-weight: 700;
+  transition: color var(--transition), text-shadow var(--transition);
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -4px;
+  width: 0; height: 1.5px;
+  background: linear-gradient(90deg, var(--crimson), #e05a40);
+  box-shadow: 0 0 6px rgba(152,49,38,0.5);
+  transition: width var(--transition);
+}
+.nav-links a:hover {
+  color: var(--crimson);
+  text-shadow: 0 0 8px rgba(152,49,38,0.2);
+}
+.nav-links a:hover::after { width: 100%; }
 
-  <!-- ABOUT -->
-  <section id="o-mnie" class="section about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-img-side">
-          <div class="about-img-wrap">
-            <img src="assets/about.jpg" alt="Erna Wojaczek przy pracy"
-              onerror="this.parentElement.classList.add('img-placeholder')" />
-          </div>
-        </div>
-        <div class="about-text">
-          <p class="section-eyebrow">Rękodzielnik</p>
-          <h2 class="section-title">O mnie</h2>
-          <p>
-            Jestem Erna Wojaczek - rękodzielniczka z pasją do tradycji, historii i igły.
-            Haft towarzyszy mi od dzieciństwa, ale swoje serce oddałam przede wszystkim
-            wzornictwu dawnych Słowian i rekonstrukcjom średniowiecznym.
-          </p>
-          <p>
-            Każda praca to dla mnie podróż w czasie - do epoki, gdy wzory nie były tylko ozdobą,
-            lecz opowieścią o świecie, naturze i człowieku. W swoich haftach staram się
-            zachować tę głębię.
-          </p>
-          <p>
-            Tworzę z miłością do tradycji i precyzją rzemieślnika. Specjalizuję się
-            w haftach ludowych, słowiańskich i dawnych technikach haftowania płaskiego,
-            krzyżykowego i złotniczego.
-          </p>
-          <div class="about-badges">
-            <span class="badge">Hafty ludowe</span>
-            <span class="badge">Rekonstrukcje słowiańskie</span>
-            <span class="badge">Hafty średniowieczne</span>
-            <span class="badge">Warsztaty</span>
-          </div>
-          <div class="about-actions">
-            <a href="#kontakt" class="btn btn-primary">
-              <span aria-hidden="true">🐞</span> Napisz do mnie
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+/* CTA pill — circle-pill style */
+.nav-cta {
+  background: linear-gradient(180deg, #c0392b 0%, var(--crimson) 55%, #7a2218 100%) !important;
+  color: var(--white) !important;
+  padding: 0.36em 1.2em;
+  border-radius: 100px !important;
+  border: 1px solid #7a2218 !important;
+  box-shadow: 0 2px 6px rgba(152,49,38,0.4), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover {
+  background: linear-gradient(180deg, #d44433 0%, var(--crimson-light) 55%, #8a2a1e 100%) !important;
+  box-shadow: 0 3px 10px rgba(152,49,38,0.5), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+  transform: translateY(-1px);
+}
 
-  <!-- CONTACT -->
-  <section id="kontakt" class="section contact">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">Porozmawiajmy</p>
-        <h2 class="section-title">Kontakt</h2>
-        <p class="section-desc">Chcesz zamówić haft, wziąć udział w warsztacie lub po prostu porozmawiać o tradycji? Napisz.</p>
-      </div>
+/* ---- LOGO ---- */
+.logo-link {
+  display: flex; justify-content: center; align-items: center;
+  position: relative; z-index: 10;
+}
+.logo { display: flex; flex-direction: column; align-items: center; }
 
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-item-label">E-mail</div>
-            <a href="/cdn-cgi/l/email-protection#94f1e6faf5bae3fbfef5f7eef1ffd4f3f9f5fdf8baf7fbf9"><span class="__cf_email__" data-cfemail="bedbccd0df90c9d1d4dfddc4dbd5fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></a>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-label">Facebook</div>
-            <a href="https://www.facebook.com/ErnaWojaczekRekodzielo" target="_blank" rel="noopener">
-              Erna Wojaczek Rękodzieło
-            </a>
-          </div>
-        
-          <p class="contact-note">
-            Zamówienia realizuję z miłością i cierpliwością.<br />
-            Czas realizacji ustalam indywidualnie.
-          </p>
-        </div>
+.logo-img {
+  height: var(--logo-h);
+  width: auto;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,0.15));
+  transition: filter var(--transition);
+}
+.logo-link:hover .logo-img {
+  filter: drop-shadow(0 5px 16px rgba(152,49,38,0.25));
+}
 
-        <div class="contact-mailto">
-          <textarea id="contact-msg" class="contact-textarea" placeholder="Napisz swoją wiadomość..." rows="5"></textarea>
-          <button type="button" class="btn btn-primary btn-full" onclick="
-            var msg = document.getElementById('contact-msg').value.trim();
-            if(msg) {
-              window.location.href = 'mailto:erna.wojaczek@gmail.com?subject=Zapytanie%20ze%20strony&body=' + encodeURIComponent(msg);
-            } else {
-              alert('Wpisz treść wiadomości przed wysłaniem.');
-            }
-          ">
-            <span aria-hidden="true">🐞</span> Wyślij e-mail
-          </button>
-          <p class="form-note">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+.logo-fallback {
+  display: flex; flex-direction: column; align-items: center; gap: 0.1rem;
+}
+.logo-name {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.08em; color: var(--ink); white-space: nowrap;
+}
+.logo-sub {
+  font-family: var(--font-body); font-style: italic;
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--slate);
+}
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <nav class="footer-nav-left" aria-label="Stopka lewa">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#uslugi">Usługi</a>
-        </nav>
-        <nav class="footer-nav-right" aria-label="Stopka prawa">
-          <a href="#o-mnie">O mnie</a>
-          <a href="#kontakt">Kontakt</a>
-        </nav>
-      </div>      <p class="foote
+/* ---- MOBILE NAV ---- */
+.nav-check { display: none; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column; gap: 5px; padding: 4px;
+  cursor: pointer;
+  position: absolute; right: 0;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--ink);
+  transition: all var(--transition);
+  transform-origin: center;
+}
+
+.mobile-nav { display: none; }
+
+/* =============================
+   BUTTONS — circle-friendly
+   ============================= */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.72em 1.8em;
+  border-radius: 100px;
+  transition: all var(--transition);
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(180deg, #c0392b 0%, var(--crimson) 55%, #7a2218 100%);
+  color: var(--white);
+  border: 1px solid #7a2218;
+  box-shadow: 0 3px 10px rgba(152,49,38,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #d44433 0%, var(--crimson-light) 55%, #8a2a1e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(152,49,38,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-ghost {
+  background: linear-gradient(180deg, #ffffff 0%, #f0ece6 100%);
+  color: var(--ink);
+  border: 1px solid var(--linen);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.btn-ghost:hover {
+  border-color: var(--warm-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.btn-full { width: 100%; justify-content: center; }
+
+/* =============================
+   SECTION COMMONS
+   ============================= */
+.section { padding: var(--section-pad) 0; position: relative; }
+
+.section-header { text-align: center; max-width: 600px; margin: 0 auto 3rem; }
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--crimson); margin-bottom: 0.6rem;
+  font-weight: 700;
+}
+.section-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.35rem);
+  color: var(--ink); margin-bottom: 0.8rem;
+}
+.section-desc { color: var(--slate); font-size: 0.98rem; line-height: 1.72; }
+.contact .section-desc { white-space: nowrap; font-size: clamp(0.7rem, 1.4vw, 0.98rem); }
+
+.section-divider {
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.25rem 0; background: var(--white);
+}
+.divider-motif {
+  font-family: var(--font-display);
+  font-size: 0.58rem; letter-spacing: 0.65em; color: var(--warm-mid);
+}
+
+/* =============================
+   HERO
+   ============================= */
+/* Centered hero layout */
+.hero {
+  min-height: 100svh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 1rem;
+  padding-top: calc(var(--nav-h) + var(--logo-overflow) + 1rem);
+  background: var(--white);
+  position: relative; overflow: hidden;
+  max-width: var(--container);
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* Subtle 2006-ish decorative circles in background */
+.hero-bg-pattern {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 8% 80%, rgba(152,49,38,0.05) 0%, transparent 45%),
+    radial-gradient(circle at 92% 12%, rgba(30,62,169,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(225,221,213,0.3) 0%, transparent 65%);
+}
+
+/* decorative circle removed */
+
+.hero-content {
+  padding: 2rem 2rem 2rem clamp(1.5rem, 4vw, 3rem);
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--slate); margin-bottom: 1rem;
+}
+.hero-title {
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  color: var(--ink); margin-bottom: 1rem; font-weight: 700;
+}
+.hero-title em {
+  font-style: italic; font-weight: 400; color: var(--crimson);
+  text-shadow: var(--glow-red);
+}
+.hero-desc {
+  color: var(--slate); font-size: 1.05rem; max-width: 44ch;
+  margin-bottom: 2rem; line-height: 1.75;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.hero-ornament {
+  padding: 2rem clamp(1rem, 3vw, 2.5rem) 2rem 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Circle image frame — the main 2006 circle treatment */
+.hero-img-wrap {
+  width: 100%; max-width: 420px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--linen);
+  box-shadow:
+    0 0 0 6px rgba(225,221,213,0.5),
+    0 0 0 10px rgba(200,194,184,0.2),
+    0 12px 40px rgba(0,0,0,0.14);
+  background: var(--sand);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero-img-wrap.img-placeholder {
+  font-style: italic; font-family: var(--font-body);
+  color: var(--warm-mid); font-size: 0.85rem;
+}
+.hero-img-wrap.img-placeholder::after { content: '— foto —'; }
+
+/* =============================
+   PORTFOLIO
+   ============================= */
+.portfolio { background: var(--white); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  gap: 2rem;
+}
+
+.portfolio-item {
+  display: flex; flex-direction: column; align-items: center;
+  background: transparent;
+  border: none;
+  transition: transform var(--transition);
+}
+.portfolio-item:hover { transform: translateY(-4px); }
+
+/* Circle portfolio images */
+.portfolio-img-wrap {
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--sand);
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--linen);
+  box-shadow:
+    0 0 0 5px rgba(225,221,213,0.4),
+    0 8px 28px rgba(0,0,0,0.12);
+  transition: box-shadow var(--transition);
+  margin-bottom: 1rem;
+}
+.portfolio-item:hover .portfolio-img-wrap {
+  box-shadow:
+    0 0 0 5px rgba(152,49,38,0.12),
+    0 12px 36px rgba(0,0,0,0.18);
+}
+.portfolio-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.portfolio-item:hover .portfolio-img-wrap img { transform: scale(1.07); }
+.portfolio-img-wrap.img-placeholder {
+  font-style: italic; font-family: var(--font-body);
+  color: var(--warm-mid); font-size: 0.85rem;
+}
+.portfolio-img-wrap.img-placeholder::after { content: '— foto —'; }
+
+.portfolio-title {
+  font-family: var(--font-display); font-size: 0.88rem; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--ink);
+  text-align: center; margin-bottom: 0.2rem;
+}
+.portfolio-cat {
+  font-size: 0.82rem; font-style: italic; color: var(--slate);
+  text-align: center;
+}
+
+/* =============================
+   SERVICES
+   ============================= */
+.services { background: var(--parchment); }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
+  gap: 1.5rem;
+}
+
+/* No shape — cards sit flat on background */
+.service-card {
+  background: transparent;
+  padding: 1.7rem 0.5rem;
+  border-top: 2px solid var(--linen);
+  transition: border-color var(--transition);
+}
+.service-card:hover { border-color: var(--crimson); }
+.service-card h3 {
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--ink); margin-bottom: 0.55rem;
+}
+.service-card h3::before {
+  content: '✦ '; color: var(--crimson);
+}
+.service-card p { color: var(--slate); font-size: 0.95rem; line-height: 1.68; }
+
+/* =============================
+   ABOUT
+   ============================= */
+.about { background: var(--white); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem); align-items: center;
+}
+
+/* Circle about photo */
+.about-img-wrap {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 8px rgba(225,221,213,0.5),
+    0 0 0 14px rgba(200,194,184,0.2),
+    0 16px 48px rgba(0,0,0,0.14);
+  background: var(--sand);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto;
+  border: 3px solid var(--linen);
+}
+.about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.about-img-wrap.img-placeholder {
+  font-style: italic; font-family: var(--font-body);
+  color: var(--warm-mid); font-size: 0.9rem;
+}
+.about-img-wrap.img-placeholder::after { content: '— foto —'; }
+
+.about-text .section-title,
+.about-text .section-eyebrow { text-align: left; }
+.about-text p { color: var(--slate); margin-bottom: 1rem; }
+
+.about-badges {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 1.5rem; margin-bottom: 1.75rem;
+}
+
+/* Circular / pill badges — Web 2.0 style */
+.badge {
+  font-family: var(--font-display); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #1c3eab;
+  padding: 0.32em 1em;
+  border-radius: 100px;
+  border: 1px solid rgba(28,62,171,0.35);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(220,228,248,0.6) 100%);
+  box-shadow: 0 1px 4px rgba(28,62,171,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* =============================
+   CONTACT
+   ============================= */
+.contact { background: var(--parchment); border-top: 1px solid var(--linen); }
+
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 6vw, 5rem); align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 1.75rem; }
+.contact-item { display: flex; flex-direction: column; gap: 0.15rem; }
+.contact-item-label {
+  font-family: var(--font-display); font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate);
+}
+.contact-item a, .contact-item span {
+  font-size: 1rem; color: var(--ink); transition: color var(--transition);
+}
+.contact-item a:hover { color: var(--cobalt); }
+
+.contact-note {
+  font-style: italic; color: var(--slate); font-size: 0.94rem;
+  line-height: 1.65; padding-top: 1rem;
+  border-top: 1px solid var(--linen);
+}
+
+/* Contact box — flat on background, no shape */
+.contact-mailto {
+  background: transparent;
+  border: none;
+  padding: clamp(1.5rem, 4vw, 2.25rem) 0;
+  display: flex; flex-direction: column; gap: 0.85rem;
+}
+.contact-textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--linen);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  resize: vertical;
+  line-height: 1.65;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.contact-textarea:focus {
+  border-color: var(--warm-mid);
+  box-shadow: 0 0 0 3px rgba(200,194,184,0.25);
+}
+.contact-textarea::placeholder { color: var(--warm-mid); font-style: italic; }
+
+.mailto-intro {
+  color: var(--slate); font-size: 0.96rem; line-height: 1.7;
+}
+.form-note {
+  text-align: center; font-size: 0.8rem; color: var(--slate); font-style: italic;
+  margin-top: 0.25rem;
+}
+
+/* =============================
+   FOOTER
+   ============================= */
+.site-footer {
+  background: #6E7698 url('assets/logo_footer.jpg') center center / cover no-repeat;
+  color: var(--warm-mid);
+  padding: 1.5rem 0 1.25rem;
+  border-top: 2px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.04);
+  position: relative;
+}
+.site-footer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(60, 55, 75, 0.55);
+  pointer-events: none;
+}
+.site-footer .container { position: relative; z-index: 1; }
+.footer-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-brand { display: none; }
+.footer-nav-left {
+  display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: 3rem;
+}
+.footer-nav-right {
+  display: flex; flex-direction: row; align-items: center; justify-content: flex-end; gap: 3rem;
+}
+.footer-nav a,
+.footer-nav-left a,
+.footer-nav-right a {
+  font-family: var(--font-display); font-size: 0.67rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.82); transition: color var(--transition);
+  font-weight: 700;
+}
+.footer-nav a:hover,
+.footer-nav-left a:hover,
+.footer-nav-right a:hover { color: var(--white); }
+.footer-copy {
+  font-size: 0.76rem; color: rgba(255,255,255,0.45);
+}
+
+/* =============================
+   RESPONSIVE — tablet
+   ============================= */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: calc(var(--nav-h) + var(--logo-overflow) + 2rem) 0 3rem;
+    text-align: center;
+  }
+  .hero-content {
+    padding: 0 1.25rem;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .hero-desc { max-width: 100%; }
+  .hero-ornament { padding: 0 1.25rem 2rem; }
+  .hero-img-wrap { max-width: 300px; }
+
+  .about-grid { grid-template-columns: 1fr; }
+  .about-img-side { max-width: 360px; margin: 0 auto; }
+  .about-text .section-title,
+  .about-text .section-eyebrow { text-align: center; }
+  .about-badges { justify-content: center; }
+  .about-actions { display: flex; justify-content: center; }
+
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================
+   RESPONSIVE — mobile
+   ============================= */
+@media (max-width: 640px) {
+  :root {
+    --nav-h:   56px;
+    --logo-h:  80px;
+    --logo-overflow: calc((var(--logo-h) - var(--nav-h)) / 2);
+  }
+
+  .site-header { overflow: visible; }
+
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+
+  /* Center logo on mobile */
+  .nav {
+    grid-template-columns: auto 1fr auto;
+  }
+  .logo-link {
+    grid-column: 2;
+    justify-self: center;
+  }
+  .nav-toggle {
+    grid-column: 3;
+  }
+
+  .nav-check:checked + .nav .nav-toggle span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav-check:checked + .nav .nav-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-check:checked + .nav .nav-toggle span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .mobile-nav {
+    display: block;
+    position: absolute; top: var(--nav-h); left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--linen);
+    box-shadow: var(--nav-shadow);
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 1.25rem;
+    z-index: 200;
+  }
+  .nav-check:checked + .nav + .mobile-nav {
+    max-height: 280px;
+    padding: 1.25rem;
+  }
+  .mobile-nav ul { display: flex; flex-direction: column; gap: 1.1rem; }
+  .mobile-nav a {
+    font-family: var(--font-display); font-size: 0.82rem;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--slate);
+  }
+
+  .hero-content { padding: 2rem 1.25rem; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .services-grid  { grid-template-columns: 1fr; }
+
+  .contact .section-desc { white-space: normal; }
+
+  .footer-inner { flex-direction: column; align-items: center; gap: 1rem; }
+  .footer-nav-left, .footer-nav-right {
+    flex-direction: row; flex-wrap: wrap;
+    justify-content: center; align-items: center; gap: 1.25rem;
+  }
+
+  /* Narrow ornaments visible on mobile */
+  body::before, body::after {
+    display: block;
+    width: 22px;
+    background-size: 22px auto;
+    opacity: 0.30;
+    z-index: 1;
+  }
+}
+
+/* =============================
+   SIDE ORNAMENTS
+   ============================= */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  width: 90px;
+  height: 100vh;
+  background-image: url('assets/border-ornament.png');
+  background-repeat: repeat-y;
+  background-size: 90px auto;
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: 1;
+}
+body::before { left: 0; }
+body::after  { right: 0; transform: scaleX(-1); }
+
+@media (max-width: 900px) {
+  body::before, body::after { width: 45px; background-size: 45px auto; opacity: 0.14; }
+}
+
+@media (hover: none) {
+  .portfolio-overlay { opacity: 1; }
+}
+
