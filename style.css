@@ -30,7 +30,7 @@
   --glow-soft: 0 2px 16px rgba(0,0,0,0.13);
   --nav-shadow: 0 3px 12px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.12);
 
-  --nav-h:         80px;
+  --nav-h:         48px;
   --logo-h:        118px; /* +15% from 103px */
   --logo-overflow: calc((var(--logo-h) - var(--nav-h)) / 2);
 
@@ -232,6 +232,7 @@ ul { list-style: none; }
   font-family: var(--font-display);
   font-size: 0.66rem; letter-spacing: 0.24em; text-transform: uppercase;
   color: var(--crimson); margin-bottom: 0.6rem;
+  font-weight: 700;
 }
 .section-title {
   font-size: clamp(1.6rem, 3.5vw, 2.35rem);
@@ -252,13 +253,17 @@ ul { list-style: none; }
 /* =============================
    HERO
    ============================= */
+/* Centered hero layout */
 .hero {
   min-height: 100svh;
   display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 2rem;
+  align-items: center; gap: 1rem;
   padding-top: calc(var(--nav-h) + var(--logo-overflow) + 1rem);
   background: var(--white);
   position: relative; overflow: hidden;
+  max-width: var(--container);
+  margin-inline: auto;
+  width: 100%;
 }
 
 /* Subtle 2006-ish decorative circles in background */
@@ -270,22 +275,12 @@ ul { list-style: none; }
     radial-gradient(circle at 50% 50%, rgba(225,221,213,0.3) 0%, transparent 65%);
 }
 
-/* 2006 decorative circle stamp — top right */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: calc(var(--nav-h) + 20px);
-  right: -80px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, rgba(225,221,213,0.5) 0%, rgba(200,194,184,0.15) 60%, transparent 100%);
-  border: 1px solid rgba(200,194,184,0.3);
-  pointer-events: none;
-}
+/* decorative circle removed */
 
 .hero-content {
-  padding: 2rem 0 2rem clamp(3rem, 8vw, 7rem);
+  padding: 2rem 2rem 2rem clamp(1.5rem, 4vw, 3rem);
   position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: flex-start;
 }
 .hero-eyebrow {
   font-family: var(--font-display);
@@ -307,7 +302,7 @@ ul { list-style: none; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
 .hero-ornament {
-  padding: 2rem clamp(1.25rem, 5vw, 4rem) 2rem 0;
+  padding: 2rem clamp(1rem, 3vw, 2.5rem) 2rem 0;
   display: flex; align-items: center; justify-content: center;
 }
 
@@ -507,6 +502,26 @@ ul { list-style: none; }
   padding: clamp(1.5rem, 4vw, 2.25rem) 0;
   display: flex; flex-direction: column; gap: 0.85rem;
 }
+.contact-textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--linen);
+  border-radius: 6px;
+  padding: 0.9rem 1rem;
+  resize: vertical;
+  line-height: 1.65;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.contact-textarea:focus {
+  border-color: var(--warm-mid);
+  box-shadow: 0 0 0 3px rgba(200,194,184,0.25);
+}
+.contact-textarea::placeholder { color: var(--warm-mid); font-style: italic; }
+
 .mailto-intro {
   color: var(--slate); font-size: 0.96rem; line-height: 1.7;
 }
@@ -519,7 +534,7 @@ ul { list-style: none; }
    FOOTER
    ============================= */
 .site-footer {
-  background: #4d5c5c;
+  background: #6E7698;
   color: var(--warm-mid);
   padding: 1.5rem 0 1.25rem;
   border-top: 2px solid rgba(255,255,255,0.08);
