@@ -248,7 +248,8 @@
         <div class="contact-info">
           <div class="contact-item">
             <div class="contact-item-label">E-mail</div>
-            <a href="/cdn-cgi/l/email-protection#94f1e6faf5bae3fbfef5f7eef1ffd4f3f9f5fdf8baf7fbf9"><span class="__cf_email__" data-cfemail="bedbccd0df90c9d1d4dfddc4dbd5fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></a>
+            <!-- Replace with real address -->
+            <a href="/cdn-cgi/l/email-protection#dbbea9b5baacb4b1bab8a1beb09bbcb6bab2b7f5b8b4b6"><span class="__cf_email__" data-cfemail="482d3a26293f2722292b322d23082f25292124662b2725">[email&#160;protected]</span></a>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Facebook</div>
@@ -264,17 +265,14 @@
         </div>
 
         <div class="contact-mailto">
-          <textarea id="contact-msg" class="contact-textarea" placeholder="Napisz swoją wiadomość..." rows="5"></textarea>
-          <button type="button" class="btn btn-primary btn-full" onclick="
-            var msg = document.getElementById('contact-msg').value.trim();
-            if(msg) {
-              window.location.href = 'mailto:erna.wojaczek@gmail.com?subject=Zapytanie%20ze%20strony&body=' + encodeURIComponent(msg);
-            } else {
-              alert('Wpisz treść wiadomości przed wysłaniem.');
-            }
-          ">
-            <span aria-hidden="true">🐞</span> Wyślij e-mail
-          </button>
+          <p class="mailto-intro">
+            Kliknij przycisk poniżej, żeby utworzyć wiadomość e-mail w swojej aplikacji pocztowej.
+            Możesz też napisać bezpośrednio na adres podany obok.
+          </p>
+          <a href="/cdn-cgi/l/email-protection#274255494667425f464a574b420944484a185452454d4244531a7d46575e5346494e42021517480215174f464153" class="btn btn-primary btn-full">
+            <span aria-hidden="true">🐞</span> Napisz e-mail
+          </a>
+       
           <p class="form-note">Odpowiadam zazwyczaj w ciągu 1–2 dni roboczych.</p>
         </div>
       </div>
@@ -289,8 +287,18 @@
           <a href="#portfolio">Portfolio</a>
           <a href="#uslugi">Usługi</a>
         </nav>
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Erna Wojaczek" class="footer-logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <span class="footer-logo-fallback" style="display:none;">Erna Wojaczek - Hafty i Rękodzieło</span>
+        </div>
         <nav class="footer-nav-right" aria-label="Stopka prawa">
           <a href="#o-mnie">O mnie</a>
           <a href="#kontakt">Kontakt</a>
         </nav>
-      </div>      <p class="foote
+      </div>      <p class="footer-copy" style="text-align:center; padding-top:1rem;">© 2024 Erna Wojaczek · Hafty i Rękodzieło</p>
+    </div>
+  </footer>
+
+</body>
+</html>
