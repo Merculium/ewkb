@@ -18,7 +18,7 @@
 
   --sand:       #e1ddd5;
   --cobalt:     #1e3ea9;
-  --crimson:    #a72c26;
+  --crimson:    #983126;
   --crimson-light: #c0392b;
   --forest:     #2a8944;
 
@@ -688,4 +688,3 @@ body::after  { right: 0; transform: scaleX(-1); }
 @media (hover: none) {
   .portfolio-overlay { opacity: 1; }
 }
-
